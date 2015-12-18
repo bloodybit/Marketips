@@ -1,0 +1,163 @@
+/* Media queries */
+
+/* Extra small devices (phones, less than 768px) */
+/* No media query since this is the default in Bootstrap */
+
+@media (min-width: 0px) {
+  body {
+    padding-top: 60px;
+  }
+}
+
+/* Small devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+  body {
+    padding-top: 135px;
+  }
+
+  .front div.main-container.container-fluid, .node-type-article div.main-container.container-fluid {
+    margin-right: auto;
+    margin-left: auto;
+    padding: 0px 15px;
+  }
+
+  div.main-container.container-fluid, .page-node-revisions div.main-container.container-fluid {
+    padding: 40px 100px;
+  }
+
+  h1, h3 {
+    font-size: 38px;
+  }
+
+  h2 {
+    font-size: 32px;
+  }
+
+  #block-views-article-block-4 .caption h3 {
+    display: block;
+    font-size: 26px;
+    z-index: 100;
+    position: absolute;
+    bottom: 0px;
+    margin: 0 auto;
+    text-shadow: 0 1px 5px rgba(0, 0, 0, 0.7);
+    background: rgba(0,0,0,0.8);
+    padding: 1rem;
+    max-width: 89%;
+  }
+
+  /* Carousel */
+  .carousel-inner .carousel-caption p {
+    display: block;
+    padding: 0px 30px;
+  }
+
+  /* Masonry view on frontpage */
+  .front .masonry-brick.span-1 {
+    width: 49.2%;
+  }
+
+  /* Masonry view */
+  .not-front .masonry-brick.span-1 {
+    width: 48.1%;
+  }
+
+  /* Navigation bar */
+  .navbar-right {
+    margin-right: 0px;
+  }
+
+  .nav > li.dropdown.open {
+    position: static;
+  }
+
+  .nav > li.dropdown.open .dropdown-menu {
+    z-index: -10;
+    display: table;
+    width: 100%;
+    text-align: center;
+    left: 0px; right: 0px;
+    padding: 20px 0px 0px 0px;
+    border: 0px;
+    border-radius: 0px;
+  }
+
+  .dropdown-menu > li {
+    display: table-cell;
+  }
+
+  .container-fluid .navbar-collapse {
+    margin-top: 15px;
+  }
+
+  .newsletter-banner-container {
+    float: left;
+    margin-right: 15px;
+  }
+
+  .newsletter-banner-container img {
+    display: block;
+    position: relative;
+    top: 15px;
+    float: left;
+    width: 560px;
+  }
+
+  .dropdown-menu > li > a {
+    padding: 15px 0px;
+  }
+
+  ul.menu.nav.navbar-nav.navbar-right.secondary li.dropdown.open .dropdown-menu {
+    width: auto;
+    left: initial;
+    right: 0px;
+    z-index: -10;
+    display: table;
+    text-align: center;
+    padding: 20px 0px 0px 0px;
+    border: 0px;
+    border-radius: 0px;
+  }
+
+  .sign-in-form {
+    width: 190px !important;
+  }
+
+  .sign-up-form {
+    width: 768px;
+  }
+
+  .form-container {
+    width: 160px;
+  }
+
+}
+
+/* Medium devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+
+}
+
+/* Large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+  body {
+    padding-top: 60px;
+  }
+
+  /* Masonry view on frontpage */
+  .front .masonry-brick.span-1 {
+    width: 32.6%;
+  }
+  /* Masonry view */
+  .not-front .masonry-brick.span-1 {
+    width: 32.2%;
+  }
+
+  .navbar-header {
+    float: left;
+  }
+
+  .container-fluid .navbar-collapse {
+    margin-top: 0px;
+  }
+}

@@ -1,0 +1,57 @@
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'OldRepublic';
+}
+p, div {
+    font-family: 'OldRepublic';
+}
+
+/* Admin backend */
+#admin-menu { z-index: 9999; }
+
+.col-md-12, .col-sm-12 {
+  padding: 0px;
+}
+
+.page-taxonomy .text-center {
+  overflow: hidden;
+  clear: left;
+}
+.page-taxonomy .col {
+  margin-bottom: 20px;
+}
+
+h1, h2, h3 {
+  font-size: 28px;
+}
+
+div.main-container.container-fluid {
+  padding: 30px 30px;
+}
+
+.front div.main-container.container-fluid, .node-type-article div.main-container.container-fluid {
+  margin-right: auto;
+  margin-left: auto;
+  padding: 0px 15px;
+}
+
+#block-views-article-block-4 {
+  margin-bottom: 30px;
+}
+
+#block-block-7, #block-block-9 {
+  text-align: center;
+}
+
+#block-block-7 p, #block-block-9 p {
+  margin: 10.5px 0px 10.5px 0px;
+}
+
+.block-revisioning {
+  text-align: center;
+  margin: 10.5px 0px 10.5px 0px;
+}
+
+.block-revisioning ul {
+  padding: 0px;
+  list-style-type: none;
+}

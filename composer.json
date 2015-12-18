@@ -1,0 +1,13 @@
+{
+    "name": "albertoanceschi/docroot",
+    "description": "facebook testing purpose",
+    "require": {
+        "facebook/php-sdk-v4": "~5.0"
+    },
+    "authors": [
+        {
+            "name": "albertoanceschi",
+            "email": "anceschialberto@icloud.com"
+        }
+    ]
+}

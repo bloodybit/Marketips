@@ -1,0 +1,92 @@
+<?php
+require 'vendor/parse/php-sdk/autoload.php';
+require_once 'analytics.php';
+require_once 'mail/send.php';
+use Parse\ParseClient;
+use Parse\ParseObject;
+use Parse\ParseQuery;
+
+
+function analytics01_menu() {
+
+    /*
+     * ******* /my_module/cc
+     */
+    $items = array();
+
+    $items['custom/analytics01'] = array(
+        'title' => 'Analytics01',
+        'page callback' => 'analytics01_con',
+        'access arguments' => array('access content'),
+        'type' => MENU_CALLBACK,
+    );
+
+    return $items;
+}
+
+/*
+ * Analytics Module
+ * Page with all the information about Statistics PROTOTYPE
+ */
+function analytics01_con() {
+
+    //Parse Api in PHP
+    ParseClient::initialize('P60EfTUuOZoeZyD2qSLpOrc8DWwUk2YjEqU2HY1R', 's3b2cfGtQhSFYM16ZIJQ7yXioTjt35Um5mn9SyP8', '3jz6CONqt5psS4UlGu3RB28ldIw311Iv2I8eA3Mh');
+    drupal_add_js(drupal_get_path('module', 'analytics01') . "/Chart.js"); //Import chartjs library
+    drupal_add_js(drupal_get_path('module', 'analytics01') . "/ga.js"); //Import google Analytics
+    drupal_add_js(drupal_get_path('module', 'analytics01') . "/jquery.js"); //Import jQuery
+    drupal_add_js(drupal_get_path('module', 'analytics01') . "/MyJs/infoTraffic.js"); //Import Traffic - javascript to call php (not use of Ajax)
+    drupal_add_js(drupal_get_path('module', 'analytics01') . "/MyJs/infoArticle.js");//Import Info per Article - javascript to call php (not use of Ajax)
+
+    //Start variable to return
+    $vars = "";
+
+    $vars .= "<h3> Traffic Statistics: </h3>";
+
+    $vars .= "
+            <p><b>Select the days to analyze:</b></p>
+            <form>
+            Days: <input type=\"text\" onkeyup=\"showDays(this.value)\">
+            </form>
+            <p id='hintText'><span id=\"hint\"></span></p>";
+    //Form check each value typed in the field and send them to javascript function showDays() with the value type (should be numeric)
+
+    $vars .= "<canvas id=\"updating-chart\" width=\"500\" height=\"300\"></canvas>";
+    //canvas where I will show the graph using chartjs
+
+    $vars .= "<h3>Per article Statistics: </h3>";
+    $vars .= "<p><b>Select the Article to analyse:</b></p>
+            <form>
+            Select Article: <input type=\"text\" onkeyup=\"showArticle(this.value)\">
+            </form>
+            <p><span id=\"hintArticle\"></span></p>";
+    //Very similar form to the one above using showArticle() (should be the title of an article
+
+    $vars .= "<canvas id='updating-chart-Article' width='500' height='300'></canvas>";
+    //canvas where I will show the graph using chartjs
+
+
+    $vars .= "<input type='button' onclick='newsLetter()' value='Send NewsLetter'>";
+    //button for new letter on newsLetter() method in js
+
+
+    /*
+     *
+     *
+     *
+     *
+     *
+     *
+     *                          COMMENT HERE
+     *
+     *          SENDING MAIL IN BETA ON LOCALHOST
+     *
+     *
+     *
+     *
+     *
+     */
+
+    //Return the html and js code
+    return $vars;
+}

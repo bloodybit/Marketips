@@ -1,0 +1,103 @@
+<?php
+
+/**
+ * Implements hook_block_info().
+ */
+function bootstrap_config_block_info() {
+  $blocks = array();
+  $blocks['bootstrap-login'] = array(
+    'info' => t('Bootstrap Login/Register Menu'),
+    'status' => TRUE,
+    'region' => 'navigation',
+    'visibility' => BLOCK_VISIBILITY_NOTLISTED,
+    'pages' => '',
+  );
+  return $blocks;
+}
+
+/**
+ * Implements hook_block_view().
+ */
+function bootstrap_config_block_view($delta = '') {
+  switch ($delta) {
+    case 'bootstrap-login':
+      return user_is_logged_in() ? NULL : _bootstrap_config_login_block_view();
+  }
+  return NULL;
+}
+
+function _bootstrap_config_login_block_view() {
+  $content = '<ul class="menu nav navbar-nav navbar-right secondary">';
+  $content .= '<li class="expanded dropdown">';
+  $content .= '<a class="dropdown-toggle" href="#" data-toggle="dropdown">' . t('Log in') . ' <strong class="caret"></strong></a>';
+  $content .= '<div class="dropdown-menu dropdown-menu-right embedded-form sign-in-form">';
+  $form1 = drupal_get_form('user_login');
+  $content .= drupal_render($form1);
+  $content .= '</div>';
+  $content .= '</li>';
+
+  if (variable_get('user_register', USER_REGISTER_VISITORS_ADMINISTRATIVE_APPROVAL)) {
+    $content .= '<li class="expanded dropdown">';
+    $content .= '<a class="dropdown-toggle" href="#" data-toggle="dropdown">' . t('Register') . ' <strong class="caret"></strong></a>';
+    $content .= '<div class="dropdown-menu dropdown-menu-right embedded-form sign-up-form">';
+    $content .= '<div class="newsletter-banner-container">';
+    $content .= '<img src="/sites/all/modules/custom/bootstrap_config/newsletter.png" alt="Marketips newsletter banner">';
+    $content .= '</div>';
+    $content .= '<div class="form-container pull-right">';
+    $form = drupal_get_form('user_register_form');
+    $content .= drupal_render($form);
+    $content .= '</div>';
+    $content .= '</div>';
+    $content .= '</li>';
+  }
+  $content .= '</ul>';
+
+  return array(
+    'subject' => NULL,
+    'content' => $content,
+  );
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function bootstrap_config_form_alter(&$form, &$form_state, $form_id) {
+  switch ($form_id) {
+    case 'user_login':
+    case 'user_register_form':
+      // Add ajax wrapper to form.
+      $html_id = str_replace('_', '-', $form_id);
+      $form['#prefix'] = '<div id="ajax-' . $html_id . '-wrapper">';
+      $form['#suffix'] = '</div>';
+      // Add ajax functionality to form submit button.
+      $form['actions']['submit']['#ajax'] = array(
+        'callback' => '_bootstrap_config_ajax_callback',
+        'wrapper' => 'ajax-' . $html_id . '-wrapper',
+        'event' => 'click',
+      );
+    case 'user_register':
+      $form['account']['mail']['#description'] = t('The e-mail address is not made public and will only be used to send you a new password, our weekly newsletter or notifications.');
+      break;
+  }
+}
+
+function _bootstrap_config_ajax_callback($form, $form_state) {
+  ctools_include('ajax');
+  ctools_add_js('ajax-responder');
+
+  if (form_get_errors()) {
+    return $form; // Reload form if it didn't pass validation.
+  }
+
+  if ($form['#id'] === 'user-login') {
+    drupal_set_message(check_plain('Successful login'));
+  }
+
+  $commands = array();
+  $commands[] = ctools_ajax_command_reload();
+  return array(
+    '#type' => 'ajax',
+    '#commands' => $commands,
+  );
+}
+?>

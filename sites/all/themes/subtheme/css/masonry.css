@@ -1,0 +1,63 @@
+/* Masonry view */
+.masonry-brick.span-1 {
+  width:100%;
+}
+
+.masonry-brick {
+  border-top: 1px;
+  border-left: 1px;
+  border-right: 1px;
+  border-bottom: 1px;
+  border-color: rgb(221, 221, 221);
+  border-radius: 2px;
+  margin-bottom: 10px;
+  background-color: #ffffff;
+  box-shadow: 0px 2px 6px #aca8a8;
+}
+
+.not-front .masonry-brick {
+  float: left;
+  margin: 5px;
+}
+
+.masonry-brick .node-article {
+  padding: 0px;
+}
+
+.not-front .masonry-brick .node-article {
+  position: relative;
+}
+
+.not-front .masonry-brick .node-article .field-type-image {
+  position: relative;
+  height: 300px;
+  overflow: hidden;
+}
+
+.front .masonry-brick .node-article .field img {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.not-front .masonry-brick .node-article img {
+  position: relative;
+  min-width: 100%;
+  min-height: 300px;
+  margin: auto;
+}
+
+.masonry-brick .node-article h2 {
+  z-index: 100;
+  position: absolute;
+  bottom: 83px;
+  margin: 0 auto;
+  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.7);
+  background: rgba(0,0,0,0.8);
+  padding: 1rem;
+}
+
+.masonry-brick .node-article p {
+  padding: 1rem;
+  margin: 0;
+}

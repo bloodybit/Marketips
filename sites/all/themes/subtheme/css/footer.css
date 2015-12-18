@@ -1,0 +1,23 @@
+/* Footer */
+footer {
+  margin-top: 20px;
+  padding: 20px 0 0;
+  background-color: #222;
+  color: #fff;
+}
+
+footer a {
+  color: #fff;
+}
+
+.footer h2.block-title {
+  color: rgb(235,104,100);
+}
+
+.social-icon i.fa {
+  color: white;
+}
+
+.copyright {
+  margin-top: 50px;
+}

@@ -1,0 +1,11 @@
+name = analytics01
+description = Showing the website's Analytics
+package = custom
+core = 7.x
+files[] = analytics01.module
+
+
+; Information added by drupal.org packaging script on 2010-03-21
+version = "7.0"
+project = "drupal"
+datestamp = "1448038421"

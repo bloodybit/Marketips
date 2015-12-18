@@ -1,0 +1,25 @@
+<?php
+
+function analytics_menu() {
+
+    /*
+     * ******* /my_module/cc
+     */
+    $items = array();
+
+    $items['custom/analytics'] = array(
+        'title' => 'Analytics',
+        'page callback' => 'analytics_con',
+        'access arguments' => array('access content'),
+        'type' => MENU_CALLBACK,
+    );
+
+    return $items;
+}
+
+function analytics_con() {
+
+    $vars = '<h1>Fillo colione</h1>';
+    //y
+    return $vars;
+}
